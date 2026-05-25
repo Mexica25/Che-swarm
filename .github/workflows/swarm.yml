@@ -14,7 +14,13 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install anthropic
-      - run: python agents/middleburg_agent.py
+      
+      - name: Middleburg Agent
+        run: python agents/middleburg_agent.py
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           
+      - name: Woodys Agent
+        run: python agents/woodys_agent.py
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
