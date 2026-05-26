@@ -10,14 +10,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - uses: actions/setup-python@v4
         with:
           python-version: '3.11'
-      - run: pip install anthropic
-      
 
-          
+      - run: pip install anthropic
+
       - name: Woodys Agent
         run: python agents/woodys_agent.py
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Save Output
+        run: |
+          git config user.name "Che Swarm"
+          git config user.email "swarm@che.com"
+          git add output/
+          git commit -m "Swarm output $(date)" || echo "Nothing to commit"
+          git push
