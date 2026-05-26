@@ -26,6 +26,6 @@ jobs:
         run: |
           git config user.name "Che Swarm"
           git config user.email "swarm@che.com"
-          git add output/
+          git add -A
           git commit -m "Swarm output $(date)" || echo "Nothing to commit"
           git push
