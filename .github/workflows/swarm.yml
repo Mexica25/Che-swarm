@@ -27,6 +27,11 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
+      - name: Woodys Swarm
+        run: python agents/woodys_swarm.py
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
       - name: Save Output
         run: |
           git config user.name "Che Swarm"
