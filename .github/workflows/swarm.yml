@@ -41,9 +41,12 @@ jobs:
           TWILIO_FROM_NUMBER: ${{ secrets.TWILIO_FROM_NUMBER }}
 
       - name: Save Output
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "Che Swarm"
           git config user.email "swarm@che.com"
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/Mexica25/Che-swarm.git
           git add -A
           git commit -m "Swarm output $(date)" || echo "Nothing to commit"
           git push
